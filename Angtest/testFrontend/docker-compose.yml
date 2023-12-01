@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  angular-app:
+    container_name: angular-app-container
+    image: angular-app-frontend-swe642
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "4200:4200"
+    networks:
+      - mynetwork
+    environment:
+      API_URL: http://localhost:8080  # Change this URL based on your Spring Boot app's API endpoint
+    command: ["npm", "start"]
+
+networks:
+  mynetwork:
+    driver: bridge

@@ -1,0 +1,41 @@
+<h1> Student Surveys </h1>
+<table class = "table table-striped">
+  <thead>
+  <tr>
+    <th> First Name </th>
+    <th> Last Name </th>
+    <th> Email ID </th>
+    <th> Street Address </th>
+    <th> City </th>
+    <th> State </th>
+    <th> Zip Code </th>
+    <th> Phone Number </th>
+    <th> Most Liked </th>
+    <th> Interest Reason </th>
+    <th> Recommend </th>
+    <th> Comments </th>
+    <th> Actions </th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor = "let survey of students">
+    <td> {{ survey.firstName }} </td>
+    <td> {{ survey.lastName }} </td>
+    <td> {{ survey.emailId }} </td>
+    <td> {{ survey.streetAddress }} </td>
+    <td> {{ survey.city }} </td>
+    <td> {{ survey.state }}</td>
+    <td> {{ survey.zipCode }}</td>
+    <td> {{ survey.telephone }}</td>
+    <td> {{ survey.mostLiked }}</td>
+    <td> {{ survey.interest }}</td>
+    <td> {{ survey.recommend }}</td>
+    <td> {{ survey.comment }}</td>
+    <td>
+      <button (click)="updateStudentSurvey(survey.id)" class="btn btn-info"> Update </button>
+      <button (click)="deleteStudentSurvey(survey.id)" class="btn btn-danger" style="margin-left: 10px"> Delete </button>
+      <button (click)="viewStudentSurvey(survey.id)" class="btn btn-success" style="margin: 10px"> View </button>
+    </td>
+  </tr>
+  </tbody>
+</table>

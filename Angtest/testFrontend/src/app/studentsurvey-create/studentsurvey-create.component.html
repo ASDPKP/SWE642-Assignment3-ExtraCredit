@@ -1,0 +1,117 @@
+<div class="col-md-8 offset-md-2">
+  <h1>New Survey</h1>
+  <form (ngSubmit) = "onSubmit()">
+    <div class="container">
+      <div class="form-group">
+        <label> First Name: </label>
+        <input type="text" class="form-control" id = "firstName" [(ngModel)]="student.firstName" name="firstName" required>
+      </div>
+
+      <div class="form-group">
+        <label> Last Name: </label>
+        <input type="text" class="form-control" id = "lastName" [(ngModel)]="student.lastName" name="lastName" required>
+      </div>
+
+      <div class="form-group">
+        <label> Email ID: </label>
+        <input type="text" class="form-control" id = "emailId" [(ngModel)]="student.emailId" name="emailId" required>
+      </div>
+
+      <div class="form-group">
+        <label> Street Address: </label>
+        <input type="text" class="form-control" id = "streetAddress" [(ngModel)]="student.streetAddress" name="streetAddress" required>
+      </div>
+
+      <div class="form-group">
+        <label> City: </label>
+        <input type="text" class="form-control" id = "city" [(ngModel)]="student.city" name="city" required>
+      </div>
+
+      <div class="form-group">
+        <label> State: </label>
+        <input type="text" class="form-control" id = "state" [(ngModel)]="student.state" name="state" required>
+      </div>
+
+      <div class="form-group">
+        <label> Zip Code: </label>
+        <input type="number" class="form-control" id = "zipCode" [(ngModel)]="student.zipCode" name="zipCode" required>
+      </div>
+
+      <div class="form-group">
+        <label> Telephone: </label>
+        <input type="tel" class="form-control" id = "telephone" [(ngModel)]="student.telephone" name="telephone" required>
+      </div>
+    </div>
+    <br>
+    <div class="container">
+      <p>What did you like most about the campus?</p>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" id="Students" name="checkradio" value="Students" [(ngModel)]="student.mostLiked">
+        <label class="form-check-label">Students</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" id="Location" name="checkradio" value="Location" [(ngModel)]="student.mostLiked">
+        <label class="form-check-label">Location</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" id="Campus" name="checkradio" value="Campus" [(ngModel)]="student.mostLiked">
+        <label class="form-check-label">Campus</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" id="Atmosphere" name="checkradio" value="Atmosphere" [(ngModel)]="student.mostLiked">
+        <label class="form-check-label">Atmosphere</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" id="Dorms" name="checkradio" value="Dorms" [(ngModel)]="student.mostLiked">
+        <label class="form-check-label">Dorm Rooms</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" id="Sports" name="checkradio" value="Sports" [(ngModel)]="student.mostLiked">
+        <label class="form-check-label">Sports</label>
+      </div>
+    </div>
+    <br>
+    <div class="container">
+      <p>How did you get to know about our University?</p>
+      <div class="form-check">
+        <input type="radio" class="form-check-input" id="Friends" name="optradio" value="Friends" [(ngModel)]="student.interest">
+        <label class="form-check-label" for="Friends">Friends</label>
+      </div>
+
+      <div class="form-check">
+        <input type="radio" class="form-check-input" id="Television" name="optradio" value="Television" [(ngModel)]="student.interest">
+        <label class="form-check-label" for="Television">Television</label>
+      </div>
+
+      <div class="form-check">
+        <input type="radio" class="form-check-input" id="Internet" name="optradio" value="Internet" [(ngModel)]="student.interest">
+        <label class="form-check-label" for="Internet">Internet</label>
+      </div>
+
+      <div class="form-check">
+        <input type="radio" class="form-check-input" id="Others" name="optradio" value="Others" [(ngModel)]="student.interest">
+        <label class="form-check-label" for="Others">Others</label>
+      </div>
+    </div>
+    <br>
+    <div class="container">
+      <label for="recommendation">How likely are you to recommned this University?</label>
+      <div class="form-group">
+        <select class="form-control" id="recommendation" name="recommendation" [(ngModel)]="student.recommend">
+          <option value="Very Likely" selected>Very Likely</option>
+          <option value="Likely">Likely</option>
+          <option value="Unlikely">Unlikely</option>
+        </select>
+      </div>
+    </div>
+    <br>
+    <div class="container">
+      <div class="form-group">
+        <label for="comment">Any additional comments?</label>
+        <textarea class="form-control" id="comment" name="comment" [(ngModel)]="student.comment"></textarea>
+      </div>
+    </div>
+    <br>
+    <button class="btn btn-success" type="submit">Submit</button>
+  </form>
+</div>

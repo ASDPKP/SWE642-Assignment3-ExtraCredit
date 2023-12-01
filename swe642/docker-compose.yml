@@ -1,0 +1,36 @@
+version: '3'
+
+services:
+  mysqldb:
+    container_name: mysqldb
+    image: mysql:latest
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root123
+      MYSQL_DATABASE: mysurveys
+    networks:
+      - mynetwork
+
+  springboot-app:
+    container_name: springboot-app-container
+    image: springboot-app-frontend-swe642
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysqldb
+    environment:
+      DB_HOST: mysqldb
+      DB_PORT: 3306
+      DB_NAME: mysurveys
+      DB_USERNAME: root
+      DB_PASSWORD: root123
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:
+    driver: bridge

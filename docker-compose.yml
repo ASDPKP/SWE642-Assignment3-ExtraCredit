@@ -1,0 +1,57 @@
+version: '3'
+
+services:
+  mysqldb:
+    container_name: mysqldb
+    image: mysql:latest
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root123
+      MYSQL_DATABASE: mysurveys
+    networks:
+      - mynetwork
+    volumes:
+      - mysqldata:/var/lib/mysql
+
+  springboot-app:
+    container_name: springboot-app-container
+    image: asdpkp/swe642-assignment3:springboot
+    build:
+      context: .
+      dockerfile: Dockerfile-springboot
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysqldb
+    environment:
+      DB_HOST: mysqldb
+      DB_PORT: 3306
+      DB_NAME: mysurveys
+      DB_USERNAME: root
+      DB_PASSWORD: root123
+    networks:
+      - mynetwork
+    volumes:
+      - springbootdata:/app/data
+
+  angular-app:
+    container_name: angular-app-container
+    image: asdpkp/swe642-assignment3:angular
+    build:
+      context: .
+      dockerfile: Dockerfile-angular
+    ports:
+      - "4200:4200"
+    depends_on:
+      - springboot-app
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:
+    driver: bridge
+
+volumes:
+  mysqldata:
+  springbootdata:
